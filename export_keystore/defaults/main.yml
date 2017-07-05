@@ -1,0 +1,3 @@
+# The following vars are required
+# export_keystore_id: 'keystore_id'
+# export_keystore_filepath: "/tmp/{{export_keystore_id}}"
