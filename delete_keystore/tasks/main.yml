@@ -1,0 +1,13 @@
+- name: Delete keystore {{ delete_keystore_id }}
+  isam:
+    appliance: "{{ inventory_hostname }}"
+    username:  "{{ username }}"
+    password:  "{{ password }}"
+    lmi_port:  "{{ lmi_port }}"
+    log:       "{{ log_level }}"
+    force:     "{{ force }}"
+    action: ibmsecurity.isam.base.ssl_certificates.certificate_databases.delete
+    isamapi:
+      cert_dbase_id: "{{ delete_keystore_id }}"
+  when: delete_keystore_id is defined
+  notify: Commit Changes
