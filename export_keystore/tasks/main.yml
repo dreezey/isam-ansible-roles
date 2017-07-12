@@ -1,0 +1,14 @@
+- name: Export keystore {{ export_keystore_id }}
+  isam:
+    appliance: "{{ inventory_hostname }}"
+    username:  "{{ username }}"
+    password:  "{{ password }}"
+    lmi_port:  "{{ lmi_port }}"
+    log:       "{{ log_level }}"
+    force:     "{{ force }}"
+    action: ibmsecurity.isam.base.ssl_certificates.certificate_databases.export_db
+    isamapi:
+      cert_id: "{{ export_keystore_id }}"
+      filename: "{{ export_keystore_filepath }}"
+  when: export_keystore_id is defined and export_keystore_filepath is defined
+  notify: Commit Changes
